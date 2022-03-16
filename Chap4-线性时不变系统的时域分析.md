@@ -136,7 +136,7 @@ $\Large {d^2y(t) \over dt^2}+6{dy(t) \over dt}+5y(t)=\delta(t)$
 
 #### 2.法二
 
-$\Large g(t)=\int_{-\infty}^{t}h(\tau)d\tau$
+$\Large g(t)=\displaystyle\int_{-\infty}^{t}h(\tau)d\tau$
 
 $\Large h(t) = {dg(t) \over dt}$
 
@@ -146,17 +146,179 @@ $\Large h(t) = {dg(t) \over dt}$
 
 ## 4.2.1 差分方程的求解
 
+### 一、迭代法
+
+不能得到解析形式的闭合解
+
+### 二、经典法
+
+![image-20220316220736387](pic/image-20220316220736387.png)
+
+![image-20220316220748890](pic/image-20220316220748890.png)
+
 ## 4.2.2 离散时间系统的零输入响应与零状态响应
+
+### 一、定义
+
+零输入响应：$\large y_{zi}(n)$ ，外加激励为0，仅由系统的起始状态所引起的响应。$\large n<0$时$\large y(n)=y_{zi}(n)$
+
+零状态响应：$\large y_{zs}(n)$ ，起始状态为0，仅由激励所引起的响应
+
+完全响应：$\large y(n)=y_{zi}(n) + y_{zs}(n)$
+
+### 二、双零法
+
+已知：$\large y(n)+y(n-1)-2y(n-2)=u(n)$ ， $\large y(0)=1,y(1)=4$
+
+求解：零输入响应、零状态响应、完全响应
+
+#### 1.零输入响应
+
+给出的初始条件受输入激励影响，用迭代法计算$y(-1)$与$y(-2)$
+
+$\large y_{zi}(-1)=2,y_{zi}(-2)=1$
+
+$\large y_{zi}(n)+y_{zi}(n-1)-2y_{zi}(n-2)=0$
+
+特征方程为$\large \lambda^2+2\lambda -2=0$
+
+$\large y_{zi}(n)=[A_1+A_2(-2)^n]u(n)$
+
+代入初始条件计算得$\large A_1={4 \over 3},A_2=-{4 \over 3}$
+
+$\large y_{zi}(n)=[{4 \over 3}-{4 \over 3}(-2)^n]u(n)$
+
+#### 2.零状态响应
+
+$\large y_{zs}(n)+y_{zs}(n-1)-2y_{zs}(n-2)=u(n)$
+
+$\large y_{zs}(-1)=y_{zs}(-2)=0$
+
+齐次解：
+
+$\large y_{zs}(n)=B_1+B_2(-2)^n$
+
+$n \ge 0$时，特解为：
+
+$\large y_{zsp}(n)=Cn$
+
+代入原式得$\large C={1 \over 3}$
+
+$\large y_{zs}(n)=[B_1+B_2(-2)^n+{1 \over 3}n]u(n)$
+
+代入$n=0,1$计算得$\large B_1={5 \over 9},B_2={4 \over 9}$
+
+$\large y_{zs}(n)=[{5 \over 9}+{4 \over 9}(-2)^n+{1 \over 3}n]u(n)$
+
+#### 3.完全响应
+
+$\large y(n)=y_{zi}(n) + y_{zs}(n)=[{17 \over 9}-{8 \over 9}(-2)^n+{1 \over 3}n]u(n)$
 
 ## 4.2.3 脉冲响应
 
+### 一、定义
+
+单位脉冲信号作用下系统的零状态响应，用$h(n)$表示
+
+### 二、求解
+
+已知：$\large y(n)+5y(n-1)+6y(n-2)=2x(n)+3x(n-1)$
+
+求解：单位样值响应
+
+$\large h_0(n)+5h_0(n-1)+6h_0(n-2)=\delta(n)$
+
+方程仅含齐次解，根据特征方程解得：
+
+$\large h_0(n)=[A_1(-2)^n+A_2(-3)^n]u(n)$
+
+易知$\large h_0(-1)=h_0(-2)=0$
+
+根据迭代法知$\large h_0(0)=1,h_0(1)=-5$
+
+代入得$\large h_0(n)=[-2(-2)^n+3(-3)^n]u(n)$
+
+根据线性时不变特性：
+
+$\large h(n)=2h_0(n)+3h_0(n-1)=2\delta(n)+[-(-2)^n+3(-3)^n]u(n-1)$
+
 ## 4.2.4 阶跃响应
+
+### 一、定义
+
+单位阶跃信号作用下系统的零状态响应，用$\large g(n)$表示
+
+### 二、求解
+
+#### 1.法一
+
+假设右边仅有$\large u(n)$，求得$\large g_0(t)$，根据线性时不变特性求得$\large g(t)$
+
+#### 2.法二
+
+$\Large g(k)=\displaystyle\sum_{i=-\infty}^{k}h(i)$
+
+$\Large h(n) = g(n)-g(n-1)$
+
+
 
 
 
 # 4.3 卷积积分与卷积和
 
 ## 4.3.1 卷积积分及其应用
+
+### 一、时域分解
+
+使用门函数拟合任意函数：$\large \hat{f(t)} = \displaystyle\sum_{n=-\infty}^{\infty}f(n\Delta)\cdot \Delta \cdot g_\tau(t-n\Delta)$
+
+$\large f(t)=\lim\limits_{\Delta \to 0}\hat{f(t)}=\displaystyle\int_{-\infty}^{\infty}f(\tau)\delta(t-\tau)d\tau$
+
+### 二、卷积定义
+
+$\Large f(t)=\displaystyle\int_{-\infty}^{\infty}f_1(\tau)f_2(t-\tau)d\tau=f_1(t)*f_2(t)$
+
+系统的零状态响应$\large y_{zs}(t)=\large x(t)*h(t)$
+
+### 三、卷积性质
+
+#### 1.结合律
+
+#### 2.交换律
+
+#### 3.分配率
+
+#### 4.卷积特性
+
+$\large f(t)*\delta(t)=f(t)$
+
+$\large f(t)*\delta(t-t_0)=f(t-t_0)$
+
+$\large f(t)*\delta'(t)=f'(t)$
+
+$\large f(t)*u(t)=\displaystyle\int_{-\infty}^tf(\tau)d\tau$
+
+#### 5.时移性
+
+$\large f_1(t-t_1)*f_2(t-t_2)=f_1(t-t_1-t_2)*f_2(t)=f_2(t-t_1-t_2)*f_1(t)$
+
+#### 6.微积分性质
+
+$\large [f_1(t)*f_2(t)]'=f_1'(t)*f_2(t)=f_1(t)*f_2'(t)$
+
+$\large \int[f_1(t)*f_2(t)]dt=\int f_1(t)dt*f_2(t)=f_1(t)*\int f_2(t)dt$
+
+$\large f_1(t)*f_2(t)=\int f_1(t)dt*f_2'(t)=f_1'(t)*\int f_2(t)dt$
+
+### 四、卷积计算
+
+#### 1.定义法
+
+#### 2.图解法
+
+变量替换 -> 反褶 -> 时移 -> 相乘 -> 积分
+
+#### 3.性质法
 
 ## 4.3.2 卷积和及其应用
 
