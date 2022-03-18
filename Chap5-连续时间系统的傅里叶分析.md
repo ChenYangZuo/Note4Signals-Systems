@@ -74,7 +74,7 @@ $\displaystyle\Large f(t)=a_0+\sum_{n=1}^\infty[{a_n\over 2}(e^{jn\omega_1t}+e^{
 
 令：$\Large F_n={a_n-jb_n \over 2}$  $\Large F_{-n}={a_{-n}-jb_{-n} \over 2}={a_n+jb_n \over 2}$
 
-$\displaystyle\Large f(t)=F_0+\sum_{n=-\infty}^{\infty}F_ne^{jn\omega_1}t$
+$\displaystyle\Large f(t)=\sum_{n=-\infty}^{\infty}F_ne^{jn\omega_1t}$
 
 $\Large F_n={1 \over T_1}\int_{T_1}f(t)e^{-jn\omega_1t}dt$
 
@@ -112,15 +112,119 @@ $\large f(t)=c_0+\sum_{n=1}^{\infty}c_ncos(n\omega_1t+\varphi_n)$
 
 $\large P={1 \over T_1}\int_{T_1}|f(t)|^2dt={1 \over T_1}\int_{T_1}[c_0+\sum_{n=1}^{\infty}c_ncos(n\omega_1t+\varphi_n)]^2dt\\\large=c_0^2+{1 \over 2}\sum_{n=1}^{\infty}c_n^2=\sum_{n=1}^{\infty}|F_n|^2$
 
+直流到**4次谐波**的能量占总能量的89.886%
+
+对于一般周期信号，通常把集中周期信号平均功率**90%**以上的谐波频率范围定义为信号的频带宽度，简称**信号带宽**
+
 
 
 # 5.3 傅里叶变换
 
-## 5.3.1 典型非周期信号的傅里叶变换
+## 5.3.1 傅里叶变换
 
-## 5.3.2 傅里叶变换的性质
+对于非周期信号，看做$T \rightarrow \infty$的周期信号
 
-## 5.3.3 周期信号的傅里叶变换
+$\large F_n={1 \over T_1}\int_{T_1}f(t)e^{-j\omega_1t}dt \rightarrow 0$
+
+$\large \omega={2\pi \over T} \rightarrow 0$
+
+离散频谱趋向连续，频谱幅度趋向0，不适合使用傅里叶级数表示
+
+引入频谱密度
+
+$\large F(\omega)=\lim\limits_{T\rightarrow \infty}{F_n \over {1 \over T}}=\lim\limits_{T\rightarrow \infty}\int_{-{T \over 2}}^{T \over 2}f(t)e^{-j\omega t}dt=\int_{-\infty}^{\infty}f(t)e^{-j\omega t}dt$
+
+傅里叶正变换：
+
+$\large \mathcal F[f(t)]=F(\omega)=\int_{-\infty}^{\infty}f(t)e^{-j\omega t}dt$
+
+傅里叶反变换：
+
+$\large \mathcal F^{-1}[F(\omega)]=f(t)={1 \over 2\pi}\int_{-\infty}^{\infty}F(\omega)e^{j\omega t}dt$
+
+## 5.3.2 典型非周期信号的傅里叶变换
+
+### 一、冲激信号
+
+$\large \mathcal F[\delta(t)]=\int_{-\infty}^{\infty}\delta(t)e^{-j\omega t}dt=1$
+
+### 二、矩形脉冲信号
+
+$\large F(\omega)=\int_{-{\tau \over 2}}^{\tau \over 2}Ee^{-j\omega t}dt=\tau ESa({\omega\tau \over 2})$
+
+![image-20220317221338405](pic/image-20220317221338405.png)
+
+### 三、单边指数信号
+
+$\large f(t)=Ee^{-at}u(t)$
+
+$\large F(\omega)=\int_0^{\infty}Ee^{-at}e^{-j\omega t}dt={E \over a+j\omega}$
+
+$\large |F(\omega)|={E \over \sqrt{a^2+\omega^2}}$  $\large \varphi(\omega)=-arctan({\omega \over a})$
+
+### 四、双边指数信号
+
+$\large f(t)=Ee^{-a|t|}$
+
+$\large F(\omega)={2a \over \omega^2+a^2}$
+
+### 五、直流信号
+
+直流信号不符合绝对可积
+
+时域变化最快的信号在频域是常数，时域变化最慢的信号在频域为冲激
+
+$\large \mathcal F^{-1}[\delta(\omega)]={1 \over 2\pi}\int_{-\infty}^{\infty}\delta(\omega)e^{j\omega t}dt={1 \over 2\pi}$
+
+$\large 1 \leftrightarrow 2\pi\delta(\omega)$
+
+## 5.3.3 傅里叶变换的性质
+
+线性：$\large a_1f_1(t)+a_2f_2(t) \leftrightarrow a_1F_1(\omega)+a_2F_2(\omega)$
+
+奇偶性：$\large f(t) \leftrightarrow F(\omega),f(-t) \leftrightarrow F(-\omega)$
+
+对称性：$\large f(t) \leftrightarrow F(\omega),F(t) \leftrightarrow 2\pi f(-\omega)$
+
+尺度变换：$\large f(t) \leftrightarrow F(\omega),f(at) \leftrightarrow |{1 \over a}|F({\omega \over a})$
+
+时移：$\large f(t) \leftrightarrow F(\omega),f(t \pm t_0) \leftrightarrow e^{\pm jwt_0}F(\omega)$
+
+频移：$\large f(t) \leftrightarrow F(\omega),e^{\mp j\omega_0t}f(t) \leftrightarrow F(\omega \pm \omega_0)$
+
+卷积：$\large f_1(t) \leftrightarrow F_1(\omega),f_2(t) \leftrightarrow F_2(\omega)$
+
+​			$\large f_1(t)*f_2(t)=F_1(\omega)F_2(\omega),f_1(t)f_2(t)={1 \over 2\pi}F_1(\omega)*F_2(\omega)$
+
+积分：$\large \int_{-\infty}^{t}f(\tau)d\tau \leftrightarrow {1 \over j\omega}F(\omega)+\pi F(0)\delta(\omega)$
+
+​			$\large \int_{-\infty}^{\omega}F(\tau)d\tau \leftrightarrow {j \over t}f(t)+\pi f(0)\delta(t)$
+
+微分：$\large {df(t) \over dt} \leftrightarrow j\omega F(\omega)$
+
+​			$\large {dF(\omega) \over d\omega} \leftrightarrow -jtf(t)$
+
+帕斯瓦尔定理：$\large \int_{-\infty}^{\infty}|f(t)|^2dt={1\over 2\pi}\int_{-\infty}^{\infty}|F(\omega)|^2d\omega$
+
+## 5.3.4 周期信号的傅里叶变换
+
+### 一、傅里叶变换
+
+$\large f(t)e^{j\omega_0t} \leftrightarrow F(\omega-\omega_0)$
+
+$\large f(t)=1, e^{j\omega_0t} \leftrightarrow 2\pi\delta(\omega-\omega_0)$
+
+$\large cos(\omega_0t)={1 \over 2}[e^{j\omega_0t}+e^{-j\omega_0t}] \leftrightarrow  \pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$
+
+对于周期函数：$\displaystyle\large f(t)=\sum_{m=-\infty}^{\infty}F_ne^{jn\omega_1t}$
+
+$\displaystyle\large \mathcal F[f(t)]=\sum_{m=-\infty}^{\infty}F_n\mathcal F(e^{jn\omega_1t})=2\pi\sum_{m=-\infty}^{\infty}F_n\delta(\omega-n\omega_1)$
+
+### 二、傅里叶变换与傅里叶级数
+
+周期信号傅里叶级数展开的系数和从周期信号中截取一个周期的傅里叶变换满足：
+
+$\large F_n={1 \over T_1}F(\omega)|_{\omega=n\omega_0}$
 
 
 
@@ -128,11 +232,51 @@ $\large P={1 \over T_1}\int_{T_1}|f(t)|^2dt={1 \over T_1}\int_{T_1}[c_0+\sum_{n=
 
 ## 5.4.1 抽样和抽样信号频谱
 
+### 一、采样原理
+
+$\large f_s(t)=f(t) \times s(t)$
+
+$\large F_s(\omega)={1 \over 2\pi}F(\omega)*S(\omega)$
+
+### 二、理想采样
+
+使用冲激函数$\displaystyle\large s(t)=\sum_{n=-\infty}^{\infty}\delta(t-nT_s)$进行采样
+
+$\displaystyle\large F_s(\omega)={1 \over T_s}\sum_{n=-\infty}^{\infty}F(\omega-n\omega_s)$
+
+理想抽样信号的频谱是原连续信号的频谱乘以$\large {1 \over T_s}$并位移相加构成的
+
+![image-20220318121321164](pic/image-20220318121321164.png)
+
+### 三、实际采样
+
+使用脉冲函数进行采样
+
+实际抽样信号的频谱仍是原频谱的平移，只是波形大小发生变化，横向没有展缩
+
+![image-20220318121331287](pic/image-20220318121331287.png)
+
 ## 5.4.2 时域抽样定理
+
+抽样信号的频谱是原连续信号频谱的平移，距离为$\large \omega_s$，由采样频率决定
+
+想从抽样信号的频谱中恢复连续时间信号，只需恢复原信号的频谱即可，故要保证抽样信号频谱中有不混叠的原信号频谱
+
+$\Large \omega_s = {2\pi \over T_s}\ge 2\omega_{max}$
+
+$\Large T_s < {\pi \over \omega_{max}}={1 \over 2f_{max}}$
+
+通常将最低允许的抽样率$\large f_s=2f_m$称为奈奎斯特频率，最大允许的抽样间隔称为奈奎斯特间隔
+
+在抽样前设置一个前置低通滤波器防止最终产生折叠噪音
 
 
 
 # 5.5 连续时间系统的频域分析
+
+
+
+
 
 
 
