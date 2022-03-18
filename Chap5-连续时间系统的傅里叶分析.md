@@ -178,6 +178,8 @@ $\large \mathcal F^{-1}[\delta(\omega)]={1 \over 2\pi}\int_{-\infty}^{\infty}\de
 
 $\large 1 \leftrightarrow 2\pi\delta(\omega)$
 
+![image-20220318154555785](pic/image-20220318154555785.png)
+
 ## 5.3.3 傅里叶变换的性质
 
 线性：$\large a_1f_1(t)+a_2f_2(t) \leftrightarrow a_1F_1(\omega)+a_2F_2(\omega)$
@@ -216,7 +218,7 @@ $\large f(t)=1, e^{j\omega_0t} \leftrightarrow 2\pi\delta(\omega-\omega_0)$
 
 $\large cos(\omega_0t)={1 \over 2}[e^{j\omega_0t}+e^{-j\omega_0t}] \leftrightarrow  \pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$
 
-对于周期函数：$\displaystyle\large f(t)=\sum_{m=-\infty}^{\infty}F_ne^{jn\omega_1t}$
+对于周期函数：$\displaystyle\large f(t)=\sum_{n=-\infty}^{\infty}F_ne^{jn\omega_1t}$
 
 $\displaystyle\large \mathcal F[f(t)]=\sum_{m=-\infty}^{\infty}F_n\mathcal F(e^{jn\omega_1t})=2\pi\sum_{m=-\infty}^{\infty}F_n\delta(\omega-n\omega_1)$
 
@@ -274,7 +276,23 @@ $\Large T_s < {\pi \over \omega_{max}}={1 \over 2f_{max}}$
 
 # 5.5 连续时间系统的频域分析
 
+## 5.5.1 频域系统函数
 
+当LTI系统的冲激响应为$\large h(t)$时，当激励为$\large e^{j\omega t}$时，其响应为：
+
+$\large y(t)=h(t)*e^{j\omega t}=\int_{-\infty}^{\infty}h(\tau)e^{j\omega (t-\tau)}d\tau=\int_{-\infty}^{\infty}h(\tau)e^{-j\omega\tau}d\tau \cdot \large e^{j\omega t}=H(\omega)\cdot e^{j\omega t}$
+
+即：$\large e^{j\omega t} \rightarrow H(\omega)e^{j\omega t}$
+
+根据齐次性：$\large {1 \over 2\pi}F(\omega)d\omega \cdot e^{j\omega t} \rightarrow {1 \over 2\pi}F(\omega)d\omega \cdot H(\omega)e^{j\omega t}$
+
+根据可加性：$\large {1 \over 2\pi}\int_{-\infty}^{\infty}F(\omega)e^{j\omega t}d\omega \rightarrow {1 \over 2\pi}\int_{-\infty}^{\infty}F(\omega)H(\omega)e^{j\omega t}d\omega $
+
+反变换：$\large f(t) \rightarrow y(t)=\mathcal F^{-1}[F(\omega)H(\omega)]$
+
+结论：$\large y(t)=f(t)*h(t) \leftrightarrow Y(\omega)=F(\omega) \times H(\omega)$
+
+## 5.5.2 利用频域系统函数求响应
 
 
 
@@ -284,6 +302,56 @@ $\Large T_s < {\pi \over \omega_{max}}={1 \over 2f_{max}}$
 
 ## 5.6.1 系统无失真传输
 
+### 一、定义
+
+$\large y(t)=Kf(t-t_d)$
+
+$\large Y(j\omega)=Ke^{-j\omega t_d}F(j\omega)$
+
+### 二、条件
+
+$\large h(t)=K\delta(t-t_d)$
+
+$\large H(j\omega)=Ke^{-j\omega t_d}$   即：$\large |H(j\omega)|=K,\theta(\omega)=-\omega t_d$
+
+在信号带宽内满足条件即可
+
 ## 5.6.2 理想滤波器
 
+### 一、系统函数
+
+$\large H(\omega)=\begin{cases} e^{-j\omega t_d},|\omega|<\omega_c \\0, |\omega|>\omega_c \end{cases}$
+
+### 二、冲激响应
+
+$\large h(t)=\mathcal F^{-1}[H(\omega)]={\omega_c \over \pi}Sa[\omega_c(t-t_0)]$
+
+![image-20220318165516053](pic/image-20220318165516053.png)
+
+理想低通滤波器的冲激响应在冲激未到来之前就有输出，为非因果系统，物理上无法实现
+
 ## 5.6.3 调制解调
+
+已知：原始信号$\large f(t)$，载波信号$\large s(t)$，调制信号$\large f_a(t)$
+
+### 一、调制
+
+$\large f_a(t)=f(t)\cdot s(t)$
+
+$\large F_a(\Omega)={1 \over 2\pi}F(\omega)*S(\omega_0)$
+
+将原信号在频谱上向左、右搬移$\large \omega_0$
+
+![image-20220318173400726](pic/image-20220318173400726.png)
+
+### 二、同步解调
+
+$\large f_b(t)=f_a(t)\cdot s(t)$
+
+将调制信号在频谱上向左、右搬移$\large \omega_0$，原信号所在频谱区域将产生有效信息
+
+![image-20220318173602512](pic/image-20220318173602512.png)
+
+将$\large f_b(t)$通过一个低通滤波器即可恢复原信号
+
+![image-20220318173651815](pic/image-20220318173651815.png)
