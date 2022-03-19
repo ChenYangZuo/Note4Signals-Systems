@@ -194,9 +194,78 @@ $\Large i(t)=(e^{-t}-e^{-2t})u(t)$
 
 ## 6.5.1 系统函数
 
+$\large H(s)={Y_{zs}(s) \over F(s)}$
 
+$\large H(s)$是单位冲激响应$\large h(t)$的拉普拉斯变换
+
+已知：$\large y''(t)+5y'(t)+6y=2x''(t)+6x'(t)$
+
+​			$\large x(t)=(1+e^{-t})u(t)$
+
+求解：系统函数，单位冲激响应，零状态响应
+
+$\large s^2Y_{zs}(s)+5sY_{zs}(s)+6Y_{zs}(s)=2s^2X(s)+6sX(s)$
+
+$\large H(s)={Y_{zs}(s) \over X(s)}={2s^2+6s \over s^2+5s+6}=2-{4 \over s+2} \leftrightarrow h(t)=2\delta(t)-4e^{-2t}u(t)$
+
+$\large Y_{zs}(s)={2s^2+6s \over s^2+5s+6}X(s)={2s^2+6s \over s^2+5s+6}\cdot ({1 \over s}+{1 \over s+1})={-2 \over s+1}+{6 \over s+2} \leftrightarrow y_{zs}(t)=(6e^{-2t}-2e^{-t})u(t)$
 
 ## 6.5.2 系统函数的零极点
 
+### 一、定义
+
+$H(s)$化为有理真分式，分子为零的点为**零点**，分母为零的点为**极点**
+
+在图中，零点用$\bigcirc$表示，极点用$\times$表示
+
+### 二、极点分布与时域响应的关系
+
+#### 1.左半开平面
+
+负实数单极点$\large p=-\alpha$，分母有$\large s+\alpha$，响应为$\large Ke^{-\alpha t}u(t)$，逐渐衰减
+
+共轭复数极点$\large p_{1,2}=-\alpha \pm j\beta$，分母有$\large (s+\alpha)^2+\beta^2$，响应为$\large Ke^{-\alpha t}cos(\beta t+\theta)u(t)$，振荡衰减
+
+二重实数极点$\large p_{1,2}=-\alpha$，分母有$\large (s+\alpha)^2$，响应为$\large Kte^{-\alpha t}u(t)$，逐渐衰减
+
+以上三种在正无穷处响应均趋于0
+
+#### 2.虚轴上
+
+实数单极点$\large p=0$，分母中有$\large s$，响应为$\large Ku(t)$，保持恒定
+
+共轭极点$\large p_{1,2}=\pm j\beta$，分母中有$\large s^2+\beta^2$，响应为$\large Kcos(\beta t+\theta)u(t)$，振荡
+
+二重实数极点$\large p_{1,2}=0$，分母有$\large s^2$，响应为$\large Ktu(t)$，逐渐增强
+
+#### 3.右半开平面
+
+负实数单极点$\large p=\alpha$，分母有$\large s-\alpha$，响应为$\large Ke^{\alpha t}u(t)$，逐渐增强
+
+共轭复数极点$\large p_{1,2}=\alpha \pm j\beta$，分母有$\large (s-\alpha)^2+\beta^2$，响应为$\large Ke^{\alpha t}cos(\beta t+\theta)u(t)$，振荡增强
+
+二重实数极点$\large p_{1,2}=\alpha$，分母有$\large (s-\alpha)^2$，响应为$\large Kte^{\alpha t}u(t)$，逐渐增强
+
+以上三种在正无穷处响应均趋于正无穷
+
 ## 6.5.3 系统的稳定性分析
 
+### 一、定义
+
+充要条件：单位冲激响应绝对可积 $\large \int_{-\infty}^{\infty}|h(t)|dt<\infty$
+
+对于因果信号：$\large \int_0^{\infty}|h(t)|dt<\infty$
+
+### 二、判别
+
+#### 1.极点都在左半开平面
+
+系统稳定
+
+#### 2.极点在虚轴上有一阶极点，剩余极点在左半开平面
+
+虽然不满足绝对可积，但系统临街稳定
+
+#### 3.极点位于右半开平面或存在高阶极点
+
+不满足绝对可积，系统不稳定
