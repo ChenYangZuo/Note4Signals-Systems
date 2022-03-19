@@ -74,11 +74,69 @@ $\large f(t)={1 \over 2\pi j}\int_{\sigma-j\infty}^{\sigma+j\infty}F(s)e^{st}ds$
 
 # 6.2 拉普拉斯反变换
 
+$F(s)$化为有理真分式，分子为零的点为**零点**，分母为零的点为**极点**
 
+## 6.2.1 单阶实数极点
+
+已知：$\large F(s)={3s+1 \over s^2+5s+6}$
+
+求解：因果信号$\large f(t)$
+
+$\large F(s)={3s+1 \over (s+2)(s+3)}={K_1\over s+2}+{K_2\over s+3}$
+
+$\large K_1=(s+2)F(s)|_{s=-2}=-5$
+
+$\large K_2=(s+3)F(s)|_{s=-3}=8$
+
+$\large F(s)={-5\over s+2}+{8\over s+3}$
+
+$\large f(t)=(-5e^{-2t}+8e^{-3t})u(t)$
+
+## 6.2.2 共轭复数极点
+
+已知：$\large F(s)={s+1 \over (s+1)^2+4}$
+
+求解：因果信号$\large f(t)$
+
+$\large F(s)={K_1 \over s+1-2j}+{K_2 \over s+1+2j}$
+
+$\large K_1=(3+1-2j)F(s)|_{s=-1+2j}={1\over 2}$
+
+$\large K_1=(3+1+2j)F(s)|_{s=-1-2j}={1\over 2}$
+
+$\large F(s)={{1\over 2} \over s+1-2j}+{{1\over 2} \over s+1+2j}$
+
+$\large f(t)=({1\over 2}e^{(-1+2j)t}+{1\over 2}e^{(-1-2j)t})u(t)=e_{-t}cos(2t)u(t)$
+
+## 6.2.3 实数重根极点
+
+已知：$\large F(s)={s^2 \over (s+1)^3}$
+
+求解：因果信号$\large f(t)$
+
+$\large F(s)={K_1 \over (S+1)^3}+{K_2 \over (S+1)^2}+{K_3 \over S+1}$
+
+两边同乘$\large (s+1)^3$，得$\large s^2=K_1+(s+1)K_2+(s+1)^2K_3$
+
+代入$\large s=-1$，得$\large K_1=1$
+
+两边对s求导，得$\large 2s=K_2+2(s+1)K_3$
+
+代入$\large s=-1$，得$\large K_2=-2$
+
+两边对s求导，得$\large K_3=1$
+
+即$\large F(s)={1 \over (S+1)^3}-{2 \over (S+1)^2}+{1 \over S+1}$
+
+$\large f(t)=({1\over 2}t^2e^{-t}-2te^{-t}+e^{-t})u(t)$
 
 
 
 # 6.3 拉普拉斯变换求解微分方程
+
+
+
+
 
 
 
@@ -97,3 +155,4 @@ $\large f(t)={1 \over 2\pi j}\int_{\sigma-j\infty}^{\sigma+j\infty}F(s)e^{st}ds$
 ## 6.5.2 系统函数的零极点
 
 ## 6.5.3 系统的稳定性分析
+
