@@ -134,9 +134,27 @@ $\large f(t)=({1\over 2}t^2e^{-t}-2te^{-t}+e^{-t})u(t)$
 
 # 6.3 拉普拉斯变换求解微分方程
 
+已知：$\large y''(t)+5y'(t)+6y(t)=2x'(t)+6x(t)$
 
+​			$\large y(0_-)=1,y'(0_-)=-1$
 
+​			$\large x(t)=e^{-t}u(t)$
 
+求解：零状态响应、零输入响应、完全响应
+
+$\large X(s)={1 \over s+1} \quad X'(t)=sX(s)-x(0_-)={s \over s+1}$
+
+$\large y'(t)=sY(s)-y(o_-)=sY(s)-1 \quad y''(t)=s^2Y(s)-sy(0_-)-y'(0_-)=s^2Y(s)-s+1$
+
+原式化为$\large (s^2+5s+6)Y(s)=2(s+3)X(s)+s+4$
+
+$\large Y(s)={2(s+3) \over s^2+5s+6}X(s)+{s+4 \over s^2+5s+6}$
+
+$\large Y_{zs}(s)={2(s+3) \over s^2+5s+6}X(s)={-2 \over s+2}+{2 \over s+1} \leftrightarrow y_{zs}(t)=(-2e^{-2t}+2e^{-t})u(t)$
+
+$\large Y_{zi}(s)={s+4 \over s^2+5s+6}={2 \over s+2}+{-1 \over s+3} \leftrightarrow y_{zi}(t)=(2e^{-2t}-e^{-3t})u(t)$
+
+$\large y(t)=y_{zs}(t)+y_{zi}(t)=(2e^{-t}-e^{-3t})u(t)$
 
 
 
@@ -144,13 +162,39 @@ $\large f(t)=({1\over 2}t^2e^{-t}-2te^{-t}+e^{-t})u(t)$
 
 ## 6.4.1 电路元件的s域模型
 
+### 一、电阻模型
+
+$\large u(t)=Ri(t) \leftrightarrow U(s)=RI(s)$
+
+### 二、电容模型
+
+$\large i(t)=C{du_C(t)\over dt} \leftrightarrow I(s)=sCU_C(s)-Cu_C(0_-) \leftrightarrow U_C(s)={1 \over sC}I(s)+{1 \over s}u_C(0_-)$
+
+### 三、电感模型
+
+$\large u(t)=L{di_L(t) \over dt} \leftrightarrow U(s)=sLI_L(s)-Li_L(0_-) \leftrightarrow I_L(s)={1 \over sL}U(s)+{i_L(0_-) \over s}$
+
 ## 6.4.2 用s域模型分析电路
+
+![image-20220319180431483](pic/image-20220319180431483.png)
+
+已知：$\large u_0=1,L=1,C=0.5,R=3$
+
+求解：$\large i(t)$
+
+$\Large {u_0 \over s}=sLI(s)+{1 \over sC}I(s)+RI(s)$
+
+$\Large I(s)={u_0 \over s(sL+{1 \over sC}+R)}={1 \over s^2+3s+2}={1 \over s+1}+{-1 \over s+2}$
+
+$\Large i(t)=(e^{-t}-e^{-2t})u(t)$
 
 
 
 # 6.5 系统函数及零极点分析
 
 ## 6.5.1 系统函数
+
+
 
 ## 6.5.2 系统函数的零极点
 
