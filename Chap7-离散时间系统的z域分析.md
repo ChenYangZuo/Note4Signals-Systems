@@ -106,11 +106,97 @@ s平面$\large \omega$从0到$\large {\pi \over T}$映射到z平面从0到$\larg
 
 ## 7.3.1 幂级数展开法
 
+### 一、因果信号
+
+已知：$\large F(z)={z \over z-a},|z|>|a|$
+
+求解：$\large f(t)$
+
+由于收敛域在圈外，故原信号为因果序列
+
+$\displaystyle\large F(z)=\sum_{n=0}^{\infty}f(n)z^{-n}$
+
+使用长除法将$\large F(z)$展开
+
+$\displaystyle\large F(z)=f(0)z^0+f(1)z^{-1}+f(2)z^{-2}+...=1+az^{-1}+a^2z^{-2}+...=\sum_{n=0}^{\infty}a^nz^{-n}$
+
+即$\large f(n)=a^nu(n)$
+
+### 二、反因果信号
+
+已知：$\large F(z)={z \over z-a},|z|>|a|$
+
+求解：$\large f(t)$
+
+由于收敛域在圈内，故原信号为反因果序列
+
+$\displaystyle\large F(z)=\sum_{n=-\infty}^{0}f(n)z^{-n}$
+
+使用长除法将$\large F(z)$展开
+
+$\displaystyle\large F(z)=f(0)z^0+f(1)z^{1}+f(2)z^{2}+...=-a^{-1}z-a^{-2}z^2-a^{-3}z^3+...$
+
+即$\large f(n)=-a^nu(-n-1)$
+
 ## 7.3.2 部分分式展开法
+
+### 一、单阶实数根
+
+已知：$\large F(z)={z^2 \over (z+1)(z-2)},1<|z|<2$
+
+求解：$\large f(n)$
+
+$\Large {F(z) \over z}={z \over (z+1)(z-2)}={K_1 \over z+1}+{K_2 \over z-2}$
+
+$\Large K_1=(z+1){F(z) \over z}|_{z=-1}={1 \over 3}$
+
+$\Large K_2=(z-2){F(z) \over z}|_{z=2}={2 \over 3}$
+
+$\Large F(z)={1 \over 3}{z \over z+1}+{2 \over 3}{z \over z-2}$
+
+收敛域为$\large 1<|z|<2$，则$\large {z \over z+1}$为因果序列，$\large {z \over z-2}$为反因果序列
+
+$\Large f(n)={1 \over 3}\cdot (-1)^nu(n)-{2 \over 3}\cdot 2^nu(-n-1)$
+
+### 二、实数重根
+
+已知：$\large F(z)={z^2 \over (z-2)^2},|z|>2$
+
+求解：$\large f(n)$
+
+$\Large {F(z) \over z}={z \over (z-2)^2}={K_1 \over (z-2)^2}+{K_2 \over z-2}$
+
+$\Large K_1=(z-2)^2{F(z) \over z}|_{z=2}=2$
+
+$\Large K_2={d[(z-2)^2{F(z) \over z}] \over dz}|_{z=2}=1$
+
+$\Large K_i={1 \over i-1}[{d^{i-1} \over dz^{i-1}}[(z-p_i)^m{F(z) \over z}]]|_{z=p_1}$
+
+$\Large F(z)={2z \over (z-2)^2}+{z \over z-2}$
+
+$\Large f(n)=[n2^n+2^n]u(n)$
+
+### 三、共轭复数根
+
+已知：$\large F(z)={z \over (z+1)^2+1},|z|>\sqrt2$
+
+求解：$\large f(n)$
+
+$\Large {F(z) \over z}={1 \over (z+1)^2+1}={K_1 \over z+1-j}+{K_2 \over z+1+j}$
+
+$\large K_1=(z+1-j)F(z)|_{z=-1+j}={1 \over 2j}$
+
+$\large K_2=(z+1+j)F(z)|_{z=-1-j}={1 \over -2j}$
+
+$\Large F(z)={1 \over 2j}\cdot {z \over z+1-j}-{1 \over 2j}\cdot {z \over z+1+j}$
+
+$\large f(n)=[{1 \over 2j}(-1+j)^n-{1 \over 2j}(-1-j)^n]u(n)$
 
 
 
 # 7.4 z变换求解差分方程
+
+
 
 
 
