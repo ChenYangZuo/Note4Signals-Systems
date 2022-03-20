@@ -64,7 +64,41 @@ $\displaystyle\large F(z)=\sum_{n=-\infty}^{\infty}f(nT)z^{-n}=\sum_{n=-\infty}^
 
 # 7.2 z变换与拉普拉斯变换的关系
 
+对$\large f(t)$进行理想采样后进行双边拉普拉斯变换：
 
+$\displaystyle\large F(s)=\sum_{n=-\infty}^{\infty}f(nT)e^{-nsT}$
+
+对$\large f(t)$进行理想采样后进行双边z变换：
+
+$\displaystyle\large F(z)=\sum_{n=-\infty}^{\infty}f(nT)z^{-n}$
+
+二者存在映射关系：$\large z=e^{sT}$
+
+将s平面表示为$\large s= \sigma +j\omega$
+
+将z平面表示为$\large z=re^{j\theta}$
+
+则$\large z=e^{(\sigma +j\omega)T}=e^{\sigma T}\cdot e^{j\omega T}$
+
+存在以下关系：
+
+$\large r=e^{\sigma T}\quad \theta=\omega T$
+
+### 一、$\large \sigma$与$\large r$的关系
+
+s平面虚轴($\large \sigma =0$)映射到z平面的单位圆
+
+s平面左半平面($\large \sigma < 0$)映射到z平面的单位圆内
+
+s平面右半平面($\large \sigma > 0$)映射到z平面的单位圆外
+
+### 二、$\large \omega$与$\large \theta$的关系
+
+s平面实轴($\large \omega =0$)映射到z平面的正实轴
+
+s平面$\large \omega$从$\large {-\pi \over T}$到0映射到z平面从$\large -\pi$到0
+
+s平面$\large \omega$从0到$\large {\pi \over T}$映射到z平面从0到$\large \pi$
 
 
 
