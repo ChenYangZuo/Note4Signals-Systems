@@ -196,7 +196,39 @@ $\large f(n)=[{1 \over 2j}(-1+j)^n-{1 \over 2j}(-1-j)^n]u(n)$
 
 # 7.4 z变换求解差分方程
 
+已知：$\large y(n)-y(n-1)-2y(n-2)=x(n)+2x(n-2)$
 
+​			$\large y(-1)=2,y(-2)=-{1 \over 2},x(n)=u(n)$
+
+求解：零状态响应，零输入响应，完全响应
+
+$\large x(n)=u(n) \leftrightarrow X(z)={z \over z-1}$
+
+$\large x(n-2) \leftrightarrow z^{-2}X(z)$
+
+$\large y(n-1) \leftrightarrow z^{-1}Y(z)+y(-1)=z^{-1}Y(z)+2$
+
+$\large y(n-2) \leftrightarrow z^{-2}Y(z)+z^{-1}y(-1)+y(-2)=z^{-2}Y(z)+2z^{-1}-{1 \over 2}$
+
+$\Large Y(z)={1+2z^{-2} \over 1-z^{-1}-2z^{-2}}X(z)+{4z^{-1}+1 \over 1-z^{-1}-2z^{-2}}$
+
+$\Large Y_{zs}(z)={1+2z^{-2} \over 1-z^{-1}-2z^{-2}}X(z)={z^2+2 \over z^2-z-2}\cdot {z \over z-1}$
+
+$\Large {Y_{zs}(s) \over z}={K_1 \over z-1}+{K_2 \over z-2}+{K_3 \over z+1}$
+
+解得$\Large Y_{zs}(z)=-{3 \over 2}{z \over z-1}+2{z \over z-2}+{1 \over 2}{z \over z+1}$
+
+$\large y_{zs}(n)=[2^{n+1}+{1 \over 2}(-1)^n-{3 \over 2}]u(n)$
+
+$\Large Y_{zi}(z)={4z^{-1}+1 \over 1-z^{-1}-2z^{-2}}$
+
+$\Large {Y_{zi}(s) \over z}={2 \over z-2}+{-1 \over z+1}$
+
+$\Large {Y_{zi}(s)}={2z \over z-2}+{-z \over z+1}$
+
+$\Large y_{zi}(n)=[2^{n+1}-(-1)^n]u(n)$
+
+$\Large y(n)=y_{zs}(n)+y_{zi}(n)=[2^{n+2}-{1 \over 2}(-1)^n-{3 \over 2}]u(n)$
 
 
 
