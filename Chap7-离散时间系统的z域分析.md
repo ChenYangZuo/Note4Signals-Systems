@@ -236,4 +236,28 @@ $\Large y(n)=y_{zs}(n)+y_{zi}(n)=[2^{n+2}-{1 \over 2}(-1)^n-{3 \over 2}]u(n)$
 
 ## 7.5.1 系统函数
 
+$\large H(z)={Y_{zs}(z) \over X(z)}$
+
+$\large H(z)$是单位样值响应$\large \delta(n)$的z变换
+
+已知：$\large y(n)+y(n-1)-2y(n-2)=x(n)+x(n-1)$
+
+求解：系统函数、单位样值响应
+
+$\large (1+z^{-1}-2z^{-2})Y_{zs}(z)=(1+z^{-1})X(z)$
+
+$\Large H(z)={Y_{zs}(z) \over X(z)}={z^2+z \over z^2+z-2}$
+
+$\Large {H(z) \over z}={z+1 \over (z+2)(z-1)}={{1 \over 3} \over z+2}+{{2 \over 3} \over z-1}$
+
+$\Large H(z)={1 \over 3}\cdot{z \over z+2}+{2 \over 3}\cdot{z \over z-1}$
+
+$\large h(n)=[{1 \over 3} \times (-2)^n+{2 \over 3}]u(n)$
+
 ## 7.5.2 零极点分析
+
+$H(z)$化为有理真分式，分子为零的点为**零点**，分母为零的点为**极点**
+
+在图中，零点用$\bigcirc$表示，极点用$\times$表示
+
+对于因果信号，极点均位于单位圆内时，系统稳定
