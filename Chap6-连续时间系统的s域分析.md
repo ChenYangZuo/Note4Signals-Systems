@@ -6,7 +6,7 @@
 
 当函数不满足**绝对可积**时，引入**衰减因子**$\large e^{-\sigma t}$，使得信号满足绝对可积，从而可以进行傅里叶变换
 
-$\large F(\sigma +j\omega)=\mathcal F[f(t)e^{-\sigma t}]=\int_{-\infty}^{\infty}f(t)e^{-{(\sigma+j\omega)t}}dt$
+$\large F(\sigma +j\omega)=\mathscr F[f(t)e^{-\sigma t}]=\int_{-\infty}^{\infty}f(t)e^{-{(\sigma+j\omega)t}}dt$
 
 $\large f(t)={1 \over 2\pi}\int_{-\infty}^{\infty}F(\sigma +j\omega)e^{{(\sigma+j\omega)t}}d\omega$
 

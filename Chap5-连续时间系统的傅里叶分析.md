@@ -136,17 +136,17 @@ $\large F(\omega)=\lim\limits_{T\rightarrow \infty}{F_n \over {1 \over T}}=\lim\
 
 傅里叶正变换：
 
-$\large \mathcal F[f(t)]=F(\omega)=\int_{-\infty}^{\infty}f(t)e^{-j\omega t}dt$
+$\large \mathscr F[f(t)]=F(\omega)=\int_{-\infty}^{\infty}f(t)e^{-j\omega t}dt$
 
 傅里叶反变换：
 
-$\large \mathcal F^{-1}[F(\omega)]=f(t)={1 \over 2\pi}\int_{-\infty}^{\infty}F(\omega)e^{j\omega t}dt$
+$\large \mathscr F^{-1}[F(\omega)]=f(t)={1 \over 2\pi}\int_{-\infty}^{\infty}F(\omega)e^{j\omega t}dt$
 
 ## 5.3.2 典型非周期信号的傅里叶变换
 
 ### 一、冲激信号
 
-$\large \mathcal F[\delta(t)]=\int_{-\infty}^{\infty}\delta(t)e^{-j\omega t}dt=1$
+$\large \mathscr F[\delta(t)]=\int_{-\infty}^{\infty}\delta(t)e^{-j\omega t}dt=1$
 
 ### 二、矩形脉冲信号
 
@@ -174,7 +174,7 @@ $\large F(\omega)={2a \over \omega^2+a^2}$
 
 时域变化最快的信号在频域是常数，时域变化最慢的信号在频域为冲激
 
-$\large \mathcal F^{-1}[\delta(\omega)]={1 \over 2\pi}\int_{-\infty}^{\infty}\delta(\omega)e^{j\omega t}dt={1 \over 2\pi}$
+$\large \mathscr F^{-1}[\delta(\omega)]={1 \over 2\pi}\int_{-\infty}^{\infty}\delta(\omega)e^{j\omega t}dt={1 \over 2\pi}$
 
 $\large 1 \leftrightarrow 2\pi\delta(\omega)$
 
@@ -220,7 +220,7 @@ $\large cos(\omega_0t)={1 \over 2}[e^{j\omega_0t}+e^{-j\omega_0t}] \leftrightarr
 
 对于周期函数：$\displaystyle\large f(t)=\sum_{n=-\infty}^{\infty}F_ne^{jn\omega_1t}$
 
-$\displaystyle\large \mathcal F[f(t)]=\sum_{m=-\infty}^{\infty}F_n\mathcal F(e^{jn\omega_1t})=2\pi\sum_{m=-\infty}^{\infty}F_n\delta(\omega-n\omega_1)$
+$\displaystyle\large \mathscr F[f(t)]=\sum_{m=-\infty}^{\infty}F_n\mathscr F(e^{jn\omega_1t})=2\pi\sum_{m=-\infty}^{\infty}F_n\delta(\omega-n\omega_1)$
 
 ### 二、傅里叶变换与傅里叶级数
 
@@ -288,7 +288,7 @@ $\large y(t)=h(t)*e^{j\omega t}=\int_{-\infty}^{\infty}h(\tau)e^{j\omega (t-\tau
 
 根据可加性：$\large {1 \over 2\pi}\int_{-\infty}^{\infty}F(\omega)e^{j\omega t}d\omega \rightarrow {1 \over 2\pi}\int_{-\infty}^{\infty}F(\omega)H(\omega)e^{j\omega t}d\omega $
 
-反变换：$\large f(t) \rightarrow y(t)=\mathcal F^{-1}[F(\omega)H(\omega)]$
+反变换：$\large f(t) \rightarrow y(t)=\mathscr F^{-1}[F(\omega)H(\omega)]$
 
 结论：$\large y(t)=f(t)*h(t) \leftrightarrow Y(\omega)=F(\omega) \times H(\omega)$
 
@@ -324,7 +324,7 @@ $\large H(\omega)=\begin{cases} e^{-j\omega t_d},|\omega|<\omega_c \\0, |\omega|
 
 ### 二、冲激响应
 
-$\large h(t)=\mathcal F^{-1}[H(\omega)]={\omega_c \over \pi}Sa[\omega_c(t-t_0)]$
+$\large h(t)=\mathscr F^{-1}[H(\omega)]={\omega_c \over \pi}Sa[\omega_c(t-t_0)]$
 
 ![image-20220318165516053](pic/image-20220318165516053.png)
 
