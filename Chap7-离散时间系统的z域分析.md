@@ -124,7 +124,7 @@ $\displaystyle\large F(z)=f(0)z^0+f(1)z^{-1}+f(2)z^{-2}+...=1+az^{-1}+a^2z^{-2}+
 
 ### 二、反因果信号
 
-已知：$\large F(z)={z \over z-a},|z|>|a|$
+已知：$\large F(z)={z \over z-a},|z|<|a|$
 
 求解：$\large f(t)$
 
@@ -134,7 +134,7 @@ $\displaystyle\large F(z)=\sum_{n=-\infty}^{0}f(n)z^{-n}$
 
 使用长除法将$\large F(z)$展开
 
-$\displaystyle\large F(z)=f(0)z^0+f(1)z^{1}+f(2)z^{2}+...=-a^{-1}z-a^{-2}z^2-a^{-3}z^3+...$
+$\displaystyle\large F(z)=f(0)z^0+f(-1)z^{1}+f(-2)z^{2}+...=-a^{-1}z-a^{-2}z^2-a^{-3}z^3+...$
 
 即$\large f(n)=-a^nu(-n-1)$
 
